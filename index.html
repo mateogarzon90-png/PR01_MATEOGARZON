@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Patrick+Hand+SC&display=swap" rel="stylesheet">
+    <title>Guardianes de la Luz</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+    <div id="aviso-rotar">
+    <div class="contenido-aviso">
+        <div class="icono-rotar">🔄</div>
+        <h2>¡Gira tu pantalla!</h2>
+        <p>Para poder jugar, necesitas poner tu móvil de lado (en horizontal).</p>
+    </div>
+</div>
+
+<div id="contenedor-bloque-juego">
+
+    <div class="interfaz-superior">
+        <h1>Guardianes de la Luz</h1>
+            <div class="interfaz-controles">
+            <button id="btn-mute" class="btn-sonido" title="Silenciar/Activar sonido">
+    <svg class="icono-audio-on" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M13.5 4.06c0-.75-.74-1.23-1.42-.87l-4.69 2.5H4.5A1.5 1.5 0 003 9.19v5.63a1.5 1.5 0 001.5 1.5h2.89l4.69 2.5c.68.36 1.42-.12 1.42-.87V4.06zM18.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM16 4.23v1.54c2.58.69 4.5 3.03 4.5 5.82s-1.92 5.13-4.5 5.82v1.54c3.42-.73 6-3.77 6-7.36s-2.58-6.63-6-7.36z"/>
+    </svg>
+    
+    <svg class="icono-audio-off oculto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M13.5 4.06c0-.75-.74-1.23-1.42-.87l-4.69 2.5H4.5A1.5 1.5 0 003 9.19v5.63a1.5 1.5 0 001.5 1.5h2.89l4.69 2.5c.68.36 1.42-.12 1.42-.87V4.06zM17.78 9.22a.75.75 0 10-1.06 1.06L18.44 12l-1.72 1.72a.75.75 0 001.06 1.06l1.72-1.72 1.72 1.72a.75.75 0 101.06-1.06L20.56 12l1.72-1.72a.75.75 0 00-1.06-1.06l-1.72 1.72-1.72-1.72z"/>
+    </svg>
+</button>
+            <div class="marcador"><span id="velitas-puntos">0</span> pts</div>
+        </div>
+    </div>
+
+    <div id="juego-reflejos">
+
+        <div id="pantalla-inicio">
+            <div class="mensaje-caja">
+                <h2>¡Bienvenido, Guardián del Amor! ❤️</h2>
+                <p class="texto-lore">Hoy encendemos las cuatro velas del domingo dedicado al <strong>Amor</strong>. Protege las llamas para mantener viva la luz del corazón.</p>
+                
+                <div class="instrucciones-caja">
+                    <h2>¿Cómo jugar?</h2>
+                    <h3>💨 El viento de la noche intentará apagar las velitas una a una.</h3>
+                    <h3>👆 ¡Sé rápido! Haz clic sobre cualquier vela apagada para volver a encenderla con tu magia antes de que se apaguen todas.</h3>
+                </div>
+                
+                <button id="btn-comenzar" class="boton-magico">Encender la Luz del Amor</button>
+            </div>
+        </div>
+
+        <div id="pantalla-final" class="oculto">
+            <div class="mensaje-caja">
+                <h2>¡Gracias, Guardián de la Luz! ✨</h2>
+                <p>Has hecho un trabajo maravilloso protegiendo las llamas. Gracias a tu tierno esfuerzo, la luz sigue brillando con fuerza.</p>
+                <div class="puntos-finales">Lograste obtener: <span>0</span> puntos</div>
+                <button id="btn-reiniciar" class="boton-magico">Seguir Cuidando la Luz</button>
+            </div>
+        </div>
+
+<div class="tablero-velitas">
+            <div class="item-vela apagada" data-id="1">
+                <div class="llama"></div>
+                <img src="velitainfondo.png" alt="Vela" class="cuerpo-vela-img">
+            </div>
+            <div class="item-vela apagada" data-id="2">
+                <div class="llama"></div>
+                <img src="velitainfondo.png" alt="Vela" class="cuerpo-vela-img">
+            </div>
+            <div class="item-vela apagada" data-id="3">
+                <div class="llama"></div>
+                <img src="velitainfondo.png" alt="Vela" class="cuerpo-vela-img">
+            </div>
+            <div class="item-vela apagada" data-id="4">
+                <div class="llama"></div>
+                <img src="velitainfondo.png" alt="Vela" class="cuerpo-vela-img">
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <script src="./scripts.js"></script>
+</body>
+</html>

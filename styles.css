@@ -1,0 +1,477 @@
+/* ==========================================================================
+   ESTILOS GENERALES (Alineación en la pantalla)
+   ========================================================================== */
+body {
+    margin: 0;
+    padding: 20px;
+    background-color: #1a1a2e; /* Fondo oscuro para la página web */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: "Balsamiq Sans", sans-serif;
+    overflow: hidden; /* Cero scrolls en toda la página web */
+}
+
+/* El contenedor que une la interfaz y el escenario */
+#contenedor-bloque-juego {
+    width: 100%;
+    max-width: 900px;
+    border-radius: 12px;
+    overflow: hidden; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    background-color: #0f0f1a; 
+}
+
+/* ==========================================================================
+   INTERFAZ SUPERIOR (Fuera de la imagen, diseño limpio)
+   ========================================================================== */
+.interfaz-superior {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 18px 25px;
+    background-color: #0f0f1a; 
+    color: #fff;               
+    border-bottom: 3px solid #fffa65; 
+}
+
+.interfaz-superior h1 {
+    margin: 0;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    color: #fffa65; 
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.interfaz-controles {
+    display: flex;
+    align-items: center;
+    gap: 15px; 
+}
+
+.marcador {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 6px 18px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* ==========================================================================
+   BOTÓN DE SILENCIO (MUTE) OPTIMIZADO CON SVG
+   ========================================================================== */
+.btn-sonido {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 0; /* Quitamos el padding para que el SVG se centre perfecto */
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+}
+
+/* Controlamos el tamaño y color del dibujo vectorial */
+.btn-sonido svg {
+    width: 22px;
+    height: 22px;
+    fill: #fefefe; /* Color dorado a juego con la interfaz */
+    transition: fill 0.2s ease;
+}
+
+.btn-sonido:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.btn-sonidohover svg {
+    fill: #ff9f43; /* Cambia a naranja cálido al pasar el ratón */
+}
+
+/* Estado cuando el juego está silenciado */
+.btn-sonido.silenciado {
+    background: rgba(255, 118, 117, 0.2);
+    border-color: #ff7675;
+}
+
+.btn-sonido.silenciado svg {
+    fill: #ff7675; /* El icono se vuelve rojizo avisando del mute */
+}
+
+/* ==========================================================================
+   PANTALLAS MODALES (Corregidas a pantalla completa absoluta y sin scrolls)
+   ========================================================================== */
+#pantalla-inicio, #pantalla-final {
+    position: fixed; /* NUEVO: Ocupa toda la ventana del navegador por encima de todo */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+p {
+    text-align: center;
+}
+
+#pantalla-inicio {
+    background: rgba(15, 15, 26, 0.96); /* Fondo oscuro para tapar el juego antes de empezar */
+    z-index: 9999; /* Máxima prioridad visual */
+}
+
+#pantalla-final {
+    background: rgba(15, 15, 26, 0.9); 
+    z-index: 9998; 
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* Caja común para los mensajes estilo pergamino mágico */
+.mensaje-caja {
+    background: linear-gradient(135deg, #2b2b40, #1a1a2e);
+    border: 3px solid #fffa65;
+    border-radius: 15px;
+    padding: 35px;
+    max-width: 550px;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.8);
+    animation: aparicion-suave 0.4s ease-out;
+    box-sizing: border-box;
+}
+
+#pantalla-inicio h2 {
+    color: #ff7675; 
+    margin-top: 0;
+    font-size: 2rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+#pantalla-final h2 {
+    color: #fffa65;
+    margin-top: 0;
+    font-size: 2rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+.texto-lore {
+    font-size: 1.5rem; 
+    line-height: 1.5;
+    color: #f5f5f0;
+    margin-bottom: 20px;
+}
+
+#pantalla-final p {
+    font-size: 1.4rem;
+    line-height: 1.5;
+    color: #e2e2e2;
+}
+
+#pantalla-final .puntos-finales {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 15px 0;
+    color: #00ffcc;
+}
+
+/* Caja interna exclusiva para resaltar las reglas del juego */
+.instrucciones-caja {
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 4px solid #ff7675;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    text-align: left; 
+}
+
+.instrucciones-caja h3 {
+    margin: 0 0 8px 0;
+    color: #fafafa;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.instrucciones-caja p {
+    margin: 6px 0;
+    font-size: 1rem;
+    color: #ddd;
+}
+
+/* ==========================================================================
+   ESCENARIO DEL JUEGO (Tus colores preferidos con bloqueo de desborde)
+   ========================================================================== */
+#juego-reflejos {
+    width: 100%;
+    height: 450px; 
+    position: relative;
+    background: linear-gradient(#888cfb, #eed46a), url('FondoVentana.jpeg');
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-position: center;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+    overflow: hidden; /* Corta los copos que viajan hacia la derecha de raíz */
+}
+
+/* ==========================================================================
+   TABLERO DE VELAS (Centrado e invariable)
+   ========================================================================== */
+.tablero-velitas {
+    display: flex;          
+    justify-content: center; 
+    gap: 2px; 
+    width: 100%;
+    padding-bottom: 50px; 
+    box-sizing: border-box;
+    align-items: end; 
+}
+
+/* ==========================================================================
+   ESTRUCTURA DE LAS VELAS (Grande y estable)
+   ========================================================================== */
+.item-vela {
+    position: relative; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    background: transparent !important;
+    width: 190px; 
+    flex-shrink: 0; 
+}
+
+/* Controlamos el tamaño de tu imagen velita.png de forma fija */
+.cuerpo-vela-img {
+    width: 100%; 
+    height: auto;      
+    user-select: none; 
+    position: relative;
+    z-index: 1;
+    background: transparent;
+    border: none;
+}
+
+/* La llama de fuego se mantiene 100% en CSS acorde a la vela grande */
+.llama {
+    position: absolute;
+    bottom: 88px; 
+    left: 50%;
+    transform: translateX(-50%); 
+    z-index: 2;
+    width: 15px;  
+    height: 30px; 
+    background: linear-gradient(to bottom, #fffa65, #ff9f43);
+    border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%;
+    display: none; 
+}
+
+/* ESTADOS DE LAS VELAS */
+.item-vela.encendida .llama {
+    display: block;
+    animation: parpadeo-vela 0.6s infinite alternate ease-in-out;
+}
+
+.item-vela.apagada .llama {
+    display: none;
+}
+
+/* ==========================================================================
+   ELEMENTOS DE INTERFAZ COMUNES (Botones y Clases auxiliares)
+   ========================================================================== */
+.boton-magico {
+    display: block;           
+    margin: 20px auto 0 auto;
+    background: linear-gradient(to right, #fffa65, #ff9f43);
+    border: none;
+    padding: 14px 35px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #0f0f1a;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 159, 67, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.boton-magico:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 250, 101, 0.6);
+}
+
+.oculto {
+    display: none !important;
+}
+
+/* ==========================================================================
+   ANIMACIONES
+   ========================================================================== */
+@keyframes aparicion-suave {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes parpadeo-vela {
+    0% {
+        transform: translateX(-50%) scale(1) rotate(-2deg);
+        box-shadow: 0 0 15px #ff9f43, 0 0 30px #ff5252;
+    }
+    100% {
+        transform: translateX(-50%) scale(1.08) rotate(2deg);
+        box-shadow: 0 0 25px #fffa65, 0 0 45px #ff9f43;
+    }
+}
+
+/* ==========================================================================
+   EFECTO DE NIEVE DINÁMICA
+   ========================================================================= */
+.copo-nieve {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    pointer-events: none; 
+    z-index: 1; 
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.8); 
+    animation: caer-nieve linear infinite;
+}
+
+
+@keyframes caer-nieve {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8; 
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(460px) translateX(80px);
+        opacity: 0;
+    }
+}
+/* ==========================================================================
+   AVISO DE ROTACIÓN OBLIGATORIA PARA MÓVILES
+   ========================================================================== */
+#aviso-rotar {
+    display: none; /* Por defecto está oculto en PC y pantallas horizontales */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0f0f1a;
+    color: white;
+    z-index: 100000; /* Por encima de absolutamente todo */
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 30px;
+}
+
+.contenido-aviso {
+    text-align: center;
+    max-width: 400px;
+}
+
+.icono-rotar {
+    font-size: 4rem;
+    animation: rodar 2s infinite linear;
+    margin-bottom: 20px;
+}
+
+@keyframes rodar {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(-90deg); } /* Simula el giro del móvil */
+    100% { transform: rotate(-90deg); }
+}
+
+/* DETECCIÓN DE MÓVIL EN VERTICAL:
+   Si el ancho es menor de 900px Y la pantalla es más alta que ancha, bloqueamos */
+@media (max-width: 900px) and (orientation: portrait) {
+    #aviso-rotar {
+        display: flex; /* Muestra el aviso */
+    }
+    #contenedor-bloque-juego {
+        display: none; /* Oculta el juego para que no se rompa el diseño */
+    }
+}
+/* ==========================================================================
+   OPTIMIZACIÓN PREMIUM PARA MÓVILES EN HORIZONTAL
+   ========================================================================== */
+@media (max-height: 500px) and (orientation: landscape) {
+    body {
+        padding: 0; /* Maximizamos el espacio en pantallas pequeñas */
+        background-color: #0f0f1a;
+    }
+
+    /* Forzamos a que el bloque del juego use todo el ancho disponible */
+    #contenedor-bloque-juego {
+        max-width: 100%;
+        border-radius: 0; 
+        box-shadow: none;
+    }
+
+
+    #juego-reflejos {
+        height: 240px; 
+        background-position: center bottom; /* La base de la imagen manda */
+        background-size: cover;
+    }
+
+    /* Ajustamos el contenedor de las velas para asentarse en el borde inferior */
+    .tablero-velitas {
+        padding-bottom: 50px; /* Pegamos el contenedor al suelo físico del fondo */
+        gap: 8px;
+    }
+
+    /* Ajustamos las velas un poco más compactas para asegurar que quepan en pantallas estrechas */
+    .item-vela {
+        width: 120px; 
+    }
+    
+    /* ==========================================================================
+       CALIBRACIÓN MILIMÉTRICA CON LA MESA FIJADA ABAJO:
+       Al estar el fondo anclado al suelo ('bottom'), en una vela de 85px de ancho,
+       la llama se sienta EXACTAMENTE en su mecha a los 40px desde la base.
+       ========================================================================== */
+    .llama {
+        bottom: 55px; 
+        width: 12px;   /* Un pelín más fina para que vaya acorde a la vela pequeña */
+        height: 24px;  /* Un pelín más baja */
+    }
+    
+    /* Compactamos la barra superior para dar el 100% de protagonismo al escenario */
+    .interfaz-superior {
+        padding: 5px 12px;
+        border-bottom: 2px solid #fffa65;
+    }
+    .interfaz-superior h1 {
+        font-size: 1rem;
+    }
+    .marcador {
+        font-size: 1rem;
+        padding: 4px 12px;
+    }
+    .btn-sonido {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+}
